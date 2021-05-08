@@ -6,12 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %} 
     {% endblock %}
     <title>Cook Book</title>
 </head>
 <body>
+
+    <header>
+        <nav class="nav-extended">
+            <div class="nav-wrapper green lighten-2 title-font">
+                <a href="{{ url_for('get_recipes') }}" class="brand-logo">Cook Book</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">Manage Recipes</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
+            <li><a href="#">Recipes</a></li>
+            <li><a href="#">Manage Recipes</a></li>
+        </ul>
+    </header>
 
     {% block content %} 
     {% endblock %}
