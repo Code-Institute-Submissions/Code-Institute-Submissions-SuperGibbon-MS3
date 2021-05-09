@@ -1,16 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
     
-    {% for recipe in recipes %} 
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.recipe_diff }}<br>
-        {{ recipe.prep_time }}<br>
-        {{ recipe.cook_time }}<br>
-        {{ recipe.ingredients }}<br>
-        {{ recipe.cook_steps }}<br>
-        {{ recipe.tools_needed }}<br>
-        {{ recipe.number_served }}<br>
-        {{ recipe.cuisine }}<br>
-    {% endfor %}
+    <div class="container">
+        <ul class="collapsible popout">
+            {% for recipe in recipes %} 
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+                        Recipe : {{ recipe.recipe_name }}
+                    </div>
+                    <div class="collapsible-body">
+                        <span>
+                            Type of Food : {{ recipe.cuisine }}<br>
+                            Difficulty : {{ recipe.recipe_diff }}<br>
+                            Prep time : {{ recipe.prep_time }}<br>
+                            Cook time : {{ recipe.cook_time }}<br>
+                            How many will it serve : {{ recipe.number_served }}<br>
+                            Ingredients : {{ recipe.ingredients }}<br>
+                            Things you'll need : {{ recipe.tools_needed }}<br>
+                            Step by step : {{ recipe.cook_steps }}<br>
+                            The end result : <br> <img src=" {{ recipe.image_source }}" alt=" {{ recipe.recipe_name }}">
+                        </span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}
