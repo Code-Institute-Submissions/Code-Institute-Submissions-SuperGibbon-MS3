@@ -18,7 +18,7 @@
     <header>
         <nav class="nav-extended">
             <div class="nav-wrapper green lighten-2 title-font">
-                <a href="{{ url_for('get_recipes') }}" class="brand-logo">Cook Book</a>
+                <a href="{{ url_for('get_recipes') }}" class="brand-logo center">Cook Book</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
@@ -37,6 +37,15 @@
 
     {% block content %} 
     {% endblock %}
+
+    <footer class="page-footer green lighten-2">
+        <div class="footer-copyright">
+          <div class="container">
+          © 2021 Copyright
+          <a class="grey-text text-lighten-4 right" href="#!">Link</a>
+          </div>
+        </div>
+      </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
