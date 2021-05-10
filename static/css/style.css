@@ -1,6 +1,14 @@
-.title-font {
+body {
     font-family: 'Rubik', sans-serif;
+}
+
+.title-font {
     font-weight: 600;
+}
+
+.par-text {
+    line-height: 30px;
+    font-size: 120%;
 }
 
 .brand-logo {
@@ -9,6 +17,14 @@
 
 .recipe-image {
     max-width: 80%;
+}
+
+.home-title {
+    margin-top: 30px;
+}
+
+.home-info {
+    margin-top: 30px;
 }
 
 footer {

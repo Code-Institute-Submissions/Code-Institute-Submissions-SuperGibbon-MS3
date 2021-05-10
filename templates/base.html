@@ -18,19 +18,19 @@
     <header>
         <nav class="nav-extended">
             <div class="nav-wrapper green lighten-2 title-font">
-                <a href="{{ url_for('get_recipes') }}" class="brand-logo center">Cook Book</a>
+                <a href="{{ url_for('go_home') }}" class="brand-logo center">Cook Book</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
-                    <li><a href="#">Recipes</a></li>
+                    <li><a href="{{ url_for('go_home') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
                     <li><a href="#">Manage Recipes</a></li>
                 </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
-            <li><a href="#">Recipes</a></li>
+            <li><a href="{{ url_for('go_home') }}">Home</a></li>
+            <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
             <li><a href="#">Manage Recipes</a></li>
         </ul>
     </header>
