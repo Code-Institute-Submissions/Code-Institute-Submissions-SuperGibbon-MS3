@@ -3,7 +3,7 @@
     
     <div class="container">
         <h3 class="title-font center">Your Recipes</h3>
-        <ul class="collapsible popout">
+        <ul class="collapsible popout center-align">
             {% for recipe in recipes %} 
                 <li>
                     <div class="collapsible-header green"><i class="material-icons">arrow_downward</i>
@@ -33,6 +33,7 @@
                 </li>
             {% endfor %}
         </ul>
+        <br><br><br>
     </div>
 
 {% endblock %}
