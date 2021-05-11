@@ -37,6 +37,18 @@
         </ul>
     </header>
 
+    <section>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %} 
+                    <div class="row flashes">
+                        <h3 class="title-font center-align green-text text-lighten-2">{{ message }}</h3>
+                    </div>
+                {% endfor %} 
+            {% endif %} 
+        {% endwith %}
+    </section>
+
     {% block content %} 
     {% endblock %}
 
@@ -44,7 +56,7 @@
         <div class="footer-copyright">
           <div class="container">
           © 2021 Copyright
-          <a class="grey-text text-lighten-4 right" href="#!">Link</a>
+          <a class="grey-text text-lighten-4 right" href="https://www.johnlewis.com/browse/home-garden/view-all-kitchen-utensils/_/N-dvb" target="_blank">John Lewis Kitchen Utensils</a>
           </div>
         </div>
       </footer>

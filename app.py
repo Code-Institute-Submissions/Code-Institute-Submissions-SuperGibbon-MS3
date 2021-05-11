@@ -28,8 +28,13 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/add_recipes")
+@app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
+    if request.method == "POST":
+        mongo.db.recipes.insert_one(request.form.to_dict())
+        flash("Recipe added to cook book")
+        return redirect("get_recipes")
+
     types = mongo.db.recipe_type.find()
     return render_template("addrecipe.html", types=types)
 
