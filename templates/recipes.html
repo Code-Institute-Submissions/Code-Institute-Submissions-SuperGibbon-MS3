@@ -21,7 +21,10 @@
                     </div>
                     <div class="collapsible-body">
                         <span>
+                            {% if recipe.image_source == "" %}
+                            {% else %}
                             <img class="recipe-image" src=" {{ recipe.image_source }}" alt=" {{ recipe.recipe_name }}"><br><br>
+                            {% endif %}
                             Type of Dish :<br>{{ recipe.recipe_type }}<br><br>
                             Difficulty : <br>{{ recipe.recipe_diff }}<br><br>
                             Prep time : <br>{{ recipe.prep_time }} minutes<br><br>
