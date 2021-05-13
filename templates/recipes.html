@@ -3,6 +3,23 @@
     
     <div class="container">
         <h3 class="title-font center green-text text-lighten-2">Your Recipes</h3>
+
+        <div class="row">
+            <form class="col s8 offset-s2 center-align" action="{{ url_for('search') }}" method="POST">
+                <div class="row">
+                    <div class="input-field">
+                        <input type="text" name="query" id="query" class="validate" required>
+                        <label for="query">Search for a recipe</label>
+                        <span class="helper-text">Search using any word from the recipe name</span>
+                    </div>
+                    <div class="col s12">
+                        <a href="{{ url_for('get_recipes') }}" class="btn-small red">Reset</a>
+                        <button type="submit" class="btn-small green">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <ul class="collapsible popout center-align">
             {% for recipe in recipes %} 
                 <li>
