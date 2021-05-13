@@ -30,7 +30,13 @@
                             Prep time : <br>{{ recipe.prep_time }} minutes<br><br>
                             Cook time : <br>{{ recipe.cook_time }} minutes<br><br>
                             How many will it serve : <br>{{ recipe.number_served }}<br><br>
-                            Ingredients : <br>{{ recipe.ingredients }}<br><br>
+                            Ingredients : 
+                            <ul>
+                            {% for ingredient in recipe.ingredients %} 
+                                <li>{{ ingredient }}</li>
+                            {% endfor %} 
+                            </ul>
+                            <br><br>
                             Things you'll need : <br>{{ recipe.tools_needed }}<br>
                             <a target="_blank" class="small-hint" href="https://www.johnlewis.com/browse/home-garden/view-all-kitchen-utensils/_/N-dvb">Are you missing something? Click here to see if John Lewis can provide it</a><br><br>
                             Step by step : <br>{{ recipe.cook_steps }}<br><br>
