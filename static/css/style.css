@@ -47,6 +47,12 @@ main {
     margin-top: 30px;
 }
 
+.home-image {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 20px 0 20px;
+}
+
 footer {
     width: 100%;
 }
