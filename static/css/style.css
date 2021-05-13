@@ -19,6 +19,10 @@ body {
     max-width: 80%;
 }
 
+.recipe-button {
+    margin-left: 10px;
+}
+
 .home-title {
     margin-top: 30px;
 }
