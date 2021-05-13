@@ -39,6 +39,17 @@ def add_recipes():
     return render_template("addrecipe.html", types=types)
 
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    if request.method == "POST":
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, request.form.to_dict())
+        flash("Recipe updated")
+        return redirect(url_for("get_recipes"))
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    types = mongo.db.recipe_type.find()
+    return render_template("editrecipe.html", types=types, recipe=recipe)
+
+
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})

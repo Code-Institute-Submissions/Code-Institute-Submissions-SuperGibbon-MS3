@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="title-font center green-text text-lighten-2">Edit a recipe!</h3>
+
+    <div class="container">
+        <div class="row">
+            <form class="col s8 offset-s2" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="What's your dish called?" id="recipe_name" name="recipe_name"
+                            value="{{ recipe.recipe_name }} "type="text" class="validate" required>
+                        <label for="recipe_name">Recipe Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="recipe_type" name="recipe_type" class="validate" required>
+                            <option value="" disabled>Choose your option</option>
+                            {% for type in types %}
+                                {% if type.type == recipe.recipe_type %}
+                                    <option value="{{ type.type }}" selected>{{ type.type }}</option>
+                                {% else %} 
+                                <option value="{{ type.type }}">{{ type.type }}</option>
+                                {% endif %}
+                            {% endfor %}
+                            </select>
+                        <label for="recipe_type">Type of Recipe</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Easy, Medium or Hard" id="recipe_diff" name="recipe_diff" value="{{ recipe.recipe_diff }}" type="text" class="validate" required>
+                        <label for="recipe_diff">Recipe Difficulty</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="How many minutes to prep?" id="prep_time" name="prep_time" value="{{ recipe.prep_time }}" type="text" class="validate" required>
+                        <label for="prep_time">Prep Time</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="How many minutes to cook?" id="cook_time" name="cook_time" value="{{ recipe.cook_time }}" type="text" class="validate" required>
+                        <label for="cook_time">Cook Time</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea placeholder="List your ingredients here" id="ingredients" name="ingredients" class="materialize-textarea">{{ recipe.ingredients}}</textarea>
+                        <label for="ingredients">Ingredients</label>
+                        <span class="helper-text" >To make it easier for others, please separate ingredients with commas</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea placeholder="List your cooking steps here" id="cook_steps" name="cook_steps" class="materialize-textarea" required>{{ recipe.cook_steps }}</textarea>
+                        <label for="cook_steps">How to cook your masterpiece</label>
+                        <span class="helper-text" >To make it easier for others, please separate steps with commas or full stops</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea placeholder="List your cooking steps here" id="tools_needed" name="tools_needed" class="materialize-textarea" required>{{ recipe.tools_needed }}</textarea>
+                        <label for="tools_needed">What equipment do you need?</label>
+                        <span class="helper-text" >To make it easier for others, please separate utensils with commas</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="How many people does your recipe serve?" id="number_served" name="number_served" value="{{ recipe.number_served }}" type="text" class="validate" required>
+                        <label for="number_served">Serves?</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Do you have an image to share, paste the link here" id="image_source" name="image_source" value="{{ recipe.image_source }}" type="text" class="validate">
+                        <label for="image_source">Recipe Image</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button class="btn-large waves-effect waves-light green lighten-2 button-form" type="submit">Submit Edit
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <a href="{{ url_for('get_recipes') }}" class="btn-large waves-effect waves-light red button-form">
+                            Cancel <i class="material-icons right">cancel</i>
+                        </a>
+                    </div>
+                </div>
+                <br><br><br>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
