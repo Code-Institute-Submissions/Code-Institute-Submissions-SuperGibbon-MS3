@@ -7,8 +7,8 @@
         <div class="row">
             <form class="col s8 offset-s2" method="POST" action="{{ url_for('add_recipes') }}">
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="What's your dish called?" id="user" name="user" type="text" value="{{ session['user'] }}" class="validate" disabled>
+                    <div class="input-field col s12 hide">
+                        <input placeholder="What's your dish called?" id="user" name="user" type="text" value="{{ session['user'] }}" class="validate" required>
                         <label for="user">Added by</label>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea placeholder="List your ingredients here" id="ingredients" name="ingredients" class="materialize-textarea"></textarea>
+                        <textarea placeholder="List your ingredients here" id="ingredients" name="ingredients" class="materialize-textarea" required></textarea>
                         <label for="ingredients">Ingredients</label>
                         <span class="helper-text" >To make it easier for others, please separate ingredients with commas</span>
                     </div>
