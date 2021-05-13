@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -28,6 +29,31 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        # check if username already exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
+        return redirect(url_for("get_recipes", username=session["user"]))
+
+    return render_template("register.html")
+
+
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
     if request.method == "POST":
@@ -42,7 +68,8 @@ def add_recipes():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, request.form.to_dict())
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)},
+                                request.form.to_dict())
         flash("Recipe updated")
         return redirect(url_for("get_recipes"))
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
