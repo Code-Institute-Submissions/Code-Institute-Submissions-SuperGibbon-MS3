@@ -8,8 +8,8 @@
             <form class="col s8 offset-s2" method="POST" action="{{ url_for('add_recipes') }}">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="What's your dish called?" id="user" name="user" type="text" class="validate" required>
-                        <label for="user">Addded by</label>
+                        <input placeholder="What's your dish called?" id="user" name="user" type="text" value="{{ session['user'] }}" class="validate" disabled>
+                        <label for="user">Added by</label>
                     </div>
                 </div>
                 <div class="row">
