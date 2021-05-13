@@ -23,6 +23,10 @@ main {
     font-size: 120%;
 }
 
+.small-hint {
+    font-size: 80%;
+}
+
 .brand-logo {
     margin-left: 10px;
 }
