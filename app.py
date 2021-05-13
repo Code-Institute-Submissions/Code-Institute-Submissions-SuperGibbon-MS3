@@ -18,6 +18,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def array_from_string(string):
+    arr = string.split(',')
+    return arr
+
+
 @app.route("/")
 def go_home():
     recipes = mongo.db.recipes.find()
@@ -95,7 +100,21 @@ def logout():
 @app.route("/add_recipes", methods=["GET", "POST"])
 def add_recipes():
     if request.method == "POST":
-        mongo.db.recipes.insert_one(request.form.to_dict())
+        recipe = {
+            "user": request.form.get("user"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_type": request.form.get("recipe_type"),
+            "recipe_diff": request.form.get("recipe_diff"),
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "ingredients": array_from_string(request.form.get("ingredients")),
+            "cook_steps": array_from_string(request.form.get("cook_steps")),
+            "tools_needed": array_from_string(
+                            request.form.get("tools_needed")),
+            "number_served": request.form.get("number_served"),
+            "image_source": request.form.get("image_source")
+        }
+        mongo.db.recipes.insert_one(recipe)
         flash("Recipe added to cook book")
         return redirect("get_recipes")
 
