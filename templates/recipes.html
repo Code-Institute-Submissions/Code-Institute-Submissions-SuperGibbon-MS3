@@ -37,9 +37,20 @@
                             {% endfor %} 
                             </ul>
                             <br><br>
-                            Things you'll need : <br>{{ recipe.tools_needed }}<br>
+                            Things you'll need :
+                            <ul>
+                                {% for tool in recipe.tools_needed %} 
+                                    <li>{{ tool }}</li>
+                                {% endfor %} 
+                                </ul>
                             <a target="_blank" class="small-hint" href="https://www.johnlewis.com/browse/home-garden/view-all-kitchen-utensils/_/N-dvb">Are you missing something? Click here to see if John Lewis can provide it</a><br><br>
-                            Step by step : <br>{{ recipe.cook_steps }}<br><br>
+                            Step by step :
+                            <ul>
+                                {% for step in recipe.cook_steps %} 
+                                    <li>{{ step }}</li>
+                                {% endfor %} 
+                            </ul>
+                            <br><br>
                             Added by : <br>{{ recipe.user }}<br><br>
                         </span>
                     </div>
