@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, abort)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -68,7 +68,7 @@ def register():
 def login():
     if is_authenticated():
         return redirect(url_for("get_recipes"))
-        
+
     if request.method == "POST":
         username = request.form.get("username").lower()
         # check if username exists in db
@@ -132,6 +132,14 @@ def add_recipes():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if not is_authenticated():
+        return redirect(url_for("login"))
+
+    if not is_object_id_valid(recipe_id):
+        abort(404)
+
+    recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)}) 
+
     if request.method == "POST":
         editrecipe = {
             "user": request.form.get("user"),
@@ -150,7 +158,7 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, editrecipe)
         flash("Recipe updated")
         return redirect(url_for("get_recipes"))
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    
     types = mongo.db.recipe_type.find()
     return render_template("editrecipe.html", types=types, recipe=recipe)
 
@@ -171,6 +179,12 @@ def search():
 
 def is_authenticated():
     return "user" in session
+
+
+def is_object_id_valid(id_value):
+    """ Validate is the id_value is a valid ObjectId
+    """
+    return id_value != "" and ObjectId.is_valid(id_value)    
 
 
 if __name__ == "__main__":
