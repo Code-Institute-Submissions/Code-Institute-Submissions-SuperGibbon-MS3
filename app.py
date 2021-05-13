@@ -37,6 +37,9 @@ def get_recipes():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if is_authenticated():
+        return redirect(url_for("get_recipes"))
+
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -91,9 +94,10 @@ def login():
 
 @app.route("/logout")
 def logout():
-    # remove user from session cookie
-    flash("You have been logged out")
-    session.pop("user")
+    if is_authenticated():
+        # remove user from session cookie
+        flash("You have been logged out")
+        session.pop("user")
     return redirect(url_for("login"))
 
 
@@ -159,6 +163,10 @@ def search():
     query = request.form.get("query")
     recipes = mongo.db.recipes.find({"$text": {"$search": query}})
     return render_template("recipes.html", recipes=recipes)
+
+
+def is_authenticated():
+    return "user" in session
 
 
 if __name__ == "__main__":
