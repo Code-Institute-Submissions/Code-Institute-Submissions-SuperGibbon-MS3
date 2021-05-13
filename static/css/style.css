@@ -1,6 +1,18 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Rubik', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+    flex: 1 0 auto;
+  }
 
 .title-font {
     font-weight: 600;
@@ -32,8 +44,5 @@ body {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
+    width: 100%;
 }
