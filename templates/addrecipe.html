@@ -14,7 +14,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="What's your dish called?" id="recipe_name" name="recipe_name" type="text" class="validate" required>
+                        <input placeholder="What's your dish called?" id="recipe_name" name="recipe_name" type="text" class="validate" pattern="^[a-zA-Z0-9]{5,25}$" required>
                         <label for="recipe_name">Recipe Name</label>
                     </div>
                 </div>
@@ -37,13 +37,13 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="How many minutes to prep?" id="prep_time" name="prep_time" type="text" class="validate" required>
+                        <input placeholder="How many minutes to prep?" id="prep_time" name="prep_time" type="text" class="validate" pattern="^[0-9]{1,3}$" required>
                         <label for="prep_time">Prep Time</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="How many minutes to cook?" id="cook_time" name="cook_time" type="text" class="validate" required>
+                        <input placeholder="How many minutes to cook?" id="cook_time" name="cook_time" type="text" class="validate" pattern="^[0-9]{1,3}$" required>
                         <label for="cook_time">Cook Time</label>
                     </div>
                 </div>
@@ -70,13 +70,13 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="How many people does your recipe serve?" id="number_served" name="number_served" type="text" class="validate" required>
+                        <input placeholder="How many people does your recipe serve?" id="number_served" name="number_served" type="text" class="validate" pattern="^[0-9]{1,2}$" required>
                         <label for="number_served">Serves?</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="Do you have an image to share, paste the link here" id="image_source" name="image_source" type="text" class="validate">
+                        <input placeholder="Do you have an image to share, paste the link here" id="image_source" name="image_source" type="url" class="validate">
                         <label for="image_source">Recipe Image</label>
                     </div>
                 </div>
