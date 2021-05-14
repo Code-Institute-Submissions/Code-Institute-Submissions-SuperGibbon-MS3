@@ -90,9 +90,6 @@ Wireframes were designed using Miro, they can be found here
 
     ![Sponser](assets/images/readme-images/sponser.jpg)
 
-
-
-    
 ## Feature Testing
 
 | Feature | Action taken  | Expected result | Pass/Fail |
