@@ -138,7 +138,7 @@ def edit_recipe(recipe_id):
     if not is_object_id_valid(recipe_id):
         abort(404)
 
-    recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)}) 
+    recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
 
     if request.method == "POST":
         editrecipe = {
@@ -158,7 +158,7 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, editrecipe)
         flash("Recipe updated")
         return redirect(url_for("get_recipes"))
-    
+
     types = mongo.db.recipe_type.find()
     return render_template("editrecipe.html", types=types, recipe=recipe)
 
@@ -182,9 +182,9 @@ def is_authenticated():
 
 
 def is_object_id_valid(id_value):
-    """ Validate is the id_value is a valid ObjectId
+    """ Validate if the id_value is a valid ObjectId
     """
-    return id_value != "" and ObjectId.is_valid(id_value)    
+    return id_value != "" and ObjectId.is_valid(id_value)
 
 
 if __name__ == "__main__":
