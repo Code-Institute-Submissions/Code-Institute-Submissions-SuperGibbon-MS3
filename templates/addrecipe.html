@@ -31,7 +31,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="Easy, Medium or Hard" id="recipe_diff" name="recipe_diff" type="text" class="validate" required>
+                        <select id="recipe_diff" name="recipe_diff" type="text" class="validate" required>
+                        <option value="" disabled selected>Choose your option</option>
+                            {% for diff in difficulty %}
+                                <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
+                            {% endfor %}
+                            </select>
                         <label for="recipe_diff">Recipe Difficulty</label>
                     </div>
                 </div>

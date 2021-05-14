@@ -127,7 +127,9 @@ def add_recipes():
         return redirect("get_recipes")
 
     types = mongo.db.recipe_type.find()
-    return render_template("addrecipe.html", types=types)
+    difficulty = mongo.db.difficulty.find()
+    return render_template(
+        "addrecipe.html", types=types, difficulty=difficulty)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
