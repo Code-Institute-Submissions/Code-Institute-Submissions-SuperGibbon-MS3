@@ -1,11 +1,5 @@
 Please note this page is not sponsered or affilated with John Lewis in any way, this is just a personal project
 
-REMEMBER TO TURN DEBUG TO FALSE IN APP.PY BEFORE SUBMISSION 
-
-first recipe https://www.bbcgoodfood.com/recipes/chorizo-mozzarella-gnocchi-bake
-
-string to array https://appdividend.com/2020/09/25/how-to-convert-python-string-to-array/#:~:text=To%20convert%20String%20to%20array,elements%20as%20individual%20list%20items.
-
 # Cook Book - A place to find and share recipes
 
 This project is designed to be place where users can come to find recipes or share recipes that they want the world to see. The project is linked with selling kitchen utensils and by including a link on the recipe page where utensils are shared it helps with brand recognition and potential sales. (in this case the brand is John Lewis, there is no official allifiation with the company)
@@ -94,26 +88,62 @@ Wireframes were designed using Miro, they can be found here
 
 | Feature | Action taken  | Expected result | Pass/Fail |
 | :--- | :--- | :--- | :--- |    
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-
+| Navbar | Click Home | Takes me to homepage | Pass |
+| Navbar | Click Recipes | Takes me to recipes page, generates recipe collapsible | Pass |
+| Navbar | Click Register | Takes me to register page | Pass |
+| Navbar | Click Log In | Takes me to login page | Pass |
+| Navbar | Click Logo | Takes me to homepage | Pass |
+| Homepage | Click "view the selection here" link | Takes me to John Lewis Utensil page | Pass |
+| Footer | Click link in footer | Takes me to John Lewis Utensil page | Pass |
+| Recipes (not logged in) | Click recipe name | Collapsible to open and show recipe | Pass |
+| Recipes (not logged in) | Search for recipe | Results to show if recipe present | Pass |
+| Recipes (not logged in) | After search click reset button | All recipes to show | Pass |
+| Recipes (not logged in) | Look for edit or delete buttons for recipes | No buttons present | Pass |
+| Recipes | Search for blank entry | Validation to fail and warn user | Pass |
+| Register | Register blank entry | Validation to fail and warn user | Pass |
+| Register | Click already regsitered Log In button | Go to login page | Fail |
+| Register | Register with a username that already exists | Page refresh with warning of username exists to user | Pass |
+| Register | Register with short username (under 5 characters) | Validation fail and warn user | Pass |
+| Register | Register new user | Successfully register and take to recipe page | Pass |
+| Logout(only available when logged in) | Click Logout button | Logout and take to login page | Pass |
+| Add recipe(only avaialable when logged in) | Click Add recipe | take me to add recipe form | Pass |
+| Add recipe form | Add blank recipe | Fail validation and warn user | Pass |
+| Add recipe form | Test input fields | Accept valid inputs | Fail |
+| Add recipe form | Add valid recipe | Accept recipe and go to recipes page showing recipes | Pass |
+| Add recipe form | Click edit button on recipe | Go to edit recipe page | Pass |
+| Add recipe form | Click delete button on recipe | Modal opens for deletion confirmation | Pass |
+| Deletion modal | Click No to confirmation | Modal closes and disappears | Pass |
+| Deletion modal | Click Yes to confirmation | Modal closes, deletes recipe | Pass |
+| Edit page | Edit recipe fields and hit submit button | Accept and update recipe | Pass |
+| Edit page | Click cancel button | Edit cancel and back to recipe page | Pass |
 
 ## Bugs
 
+- Delete function didn't function correctly, always deleted first recipe - Fixed - Fixed modal target (was using data-target when materialize uses href for a tags)
+- Already registered feature on register page didnt link to the login page - Fixed - missing href added to register.html
+- Add recipe input fields accepting any input - Fixed - patter added to input tags, image source updated to url, collection added for difficulty so user can input only easy, medium or hard
+- Edit page, steps, ingedients and equipment all come back as array, would be nice to update to string so format is easier to read on page but it doesnt affect functionality
 
 ## Deployment
 
 The project has been deployed using Heroku
 
-1. Login to Heroku
-2. 
+1. Create a local requirements.txt("pip3 freeze -- local > requirements.txt" in CLI) and Procfile("echo web: python app.py > Procfile" in CLI) ready to use with Heroku
+2. Login to Heroku (sign up if not already a member)
+3. Click on new and select Create new app
+4. Your new app, must be unique and select region closest to you location
+5. Connect Heroku app to GitHub, click the deploy tab of your app and click GitHub as your deploy method
+6. Make sure you GitHub profile is dsiplay (if not you will need to log in to GitHub)
+7. Next to your GitHub profile, search for your repository name and click search
+8. Once repo found click Connect
+9. At the top of the page go to Settings
+10. Click reveal Config Vars
+11. You will need to fill in your enviorment variables here, usually created in a env.py file, this file should not be part of your repo (add to your .gitignore)
+12. Go back to the deploy tab
+13. Click Enable automatic deployment
+14. Click deploy branch
+15. Once successfully deployed you will have a link to view your app
+16. This will update whenever you push changes to GitHub 
 
 
 ### Acknowledgements
@@ -124,4 +154,6 @@ The project has been deployed using Heroku
 
 - recipes that were used throughout development were found using - https://www.bbcgoodfood.com/recipes/
 
--Code Institute, Tutors and my Mentor were all a big part of making this project possible
+- authentication was taken from mongo mini project from course work, although I did refactor parts of it.
+
+- Code Institute, Tutors and my Mentor were all a big part of making this project possible
